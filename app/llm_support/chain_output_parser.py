@@ -20,6 +20,7 @@ def parse_chain_output(chain_output: str, framework: str) -> dict:
     parsed_output = dict()
 
     chain_output = chain_output.split("\n")
+    chain_output = [line for line in chain_output if "=" in line]
     chain_output = {line.split(" = ")[0]: line.split(" = ")[1] for line in chain_output}
 
     keywords = chain_output.get("keywords")
