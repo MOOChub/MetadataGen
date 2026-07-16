@@ -4,7 +4,7 @@ import json
 
 url = "http://127.0.0.1:5000/suggestion"
 
-path_test_data_valid = Path("test_data/test_input_suggestion.json")
+path_test_data_valid = Path("test_data/test_input_full_suggestion_valid.json")
 
 #print(test_data_valid.exists())
 with open(path_test_data_valid, "r") as f:

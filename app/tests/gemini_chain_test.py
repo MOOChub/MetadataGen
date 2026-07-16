@@ -1,4 +1,4 @@
-from app.llm_support.gemini_chain import execute_chain
+from app.llm_support.deprecated.gemini_chain import execute_chain
 from pprint import pprint
 
 title = "Sustainability in the digital age: AI and Sustainability - Balancing Innovation and Responsibility"
