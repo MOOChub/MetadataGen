@@ -1,4 +1,3 @@
-import json
 from app.framework_handler.framework_data_retriever import get_ed_level_uri_by_name
 
 
@@ -25,7 +24,7 @@ def parse_chain_output(chain_output: str, framework: str) -> dict:
 
     keywords = chain_output.get("keywords")
     if keywords:
-        keywords = json.loads(keywords.replace("'", '"'))
+        keywords = eval(keywords)
         parsed_output["keywords"] = keywords
 
     ed_level = chain_output.get("educationalLevel")
