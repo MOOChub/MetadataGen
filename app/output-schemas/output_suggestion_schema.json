@@ -1,0 +1,282 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/moochub/metadatagen/input-examples/input-metadatagen.json",
+    "title": "JSON schema for generating a full valid metadata file according to the MOOChub format.",
+    "description": "This schema specifies the format that a JSON file will have that is returned from the metadata generator upon calling the /suggestion route. It only returns optional metadata fragments together with a name and a description for further processing.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The title/name of the course",
+            "example": "Sustainability in the Digital Age: Efficient AI Techniques in the LLM Era"
+        },
+        "description": {
+            "type": "string",
+            "description": "Description of the course as an HTML document",
+            "example": "<h2>Welcome to the 'Sustainability in the Digital Age' series</h2> <p>In an era where digital technologies ..."
+        },
+        "educationalAlignment": {
+            "type": "array",
+            "description": "An array of fragments describing the topics or subjects of the course.",
+            "items": {
+                "type": "object",
+                "description": "A fragment describing the topic or subject of the course.",
+                "properties": {
+                    "educationalFramework": {
+                        "type": "string",
+                        "description": "The name of the framework used for describing the topic or subject.",
+                        "enum": [
+                           "ISCED-F"
+                       ]
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "An IRI pointing at the framework document or homepage.",
+                        "format": "iri",
+                        "example": "http://uis.unesco.org/sites/default/files/documents/international-standard-classification-of-education-fields-of-education-and-training-2013-detailed-field-descriptions-2015-en.pdf"
+
+                    },
+                    "educationalFrameworkVersion": {
+                        "type": "string",
+                        "description": "The version (year, version number) of the framework used for describing the topic or subject.",
+                        "example": "2013"
+                    },
+                    "name": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "inLanguage": {
+                                    "type": "string",
+                                    "description": "The language the name is given in. Has to be a shortcode according to BCP 47.",
+                                    "example": "en"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "The actual name of the object in the defined language.",
+                                    "example": "software and applications development and analysis"
+                                }
+                            },
+                            "required": [
+                                "inLanguage",
+                                "name"
+                            ]
+                        },
+                        "description": "List of names of the topic or subject. This array allows localized strings. A name and a language have to be given in the respective element."
+                    },
+                    "shortCode": {
+                        "type": "string",
+                        "description": "The short code for the Field of study if it is provided by the framework.",
+                        "example": "0613"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the object.",
+                        "enum": [
+                            "EducationalAlignment"
+                        ]
+                    },
+                    "targetUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "An IRI pointing at the framework node of the topic or subject.",
+                        "format": "iri",
+                        "example": "http://data.europa.eu/esco/isced-f/0613"
+                    }
+                },
+                "required": [
+                    "educationalFramework",
+                    "educationalFrameworkVersion",
+                    "name",
+                    "type"
+                ]
+            }
+        },
+        "teaches": {
+            "type": "array",
+            "description": "An array of fragments describing the skills and competencies taught in the course.",
+            "items": {
+                "type": "object",
+                "description": "A fragment describing the skill or competency taught in the course.",
+                "properties": {
+                    "educationalFramework": {
+                        "type": "string",
+                        "description": "The name of the framework used for describing the skill or competency.",
+                        "enum": [
+                           "ESCO"
+                       ]
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "An IRI pointing at the framework document or homepage.",
+                        "format": "iri",
+                        "example": "https://esco.ec.europa.eu/en/classification/skill_main#overlayspin"
+
+                    },
+                    "educationalFrameworkVersion": {
+                        "type": "string",
+                        "description": "The version (year, version number) of the framework used for describing the skill or competency.",
+                        "example": "v1.2.0"
+                    },
+                    "name": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "inLanguage": {
+                                    "type": "string",
+                                    "description": "The language the name is given in. Has to be a shortcode according to BCP 47.",
+                                    "example": "en"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "The actual name of the object in the defined language.",
+                                    "example": "utilise machine learning"
+                                }
+                            },
+                            "required": [
+                                "inLanguage",
+                                "name"
+                            ]
+                        },
+                        "description": "List of names of the skill or competency. This array allows localized strings. A name and a language have to be given in the respective element."
+                    },
+                    "shortCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The short code for the skill or competency if it is provided by the framework.",
+                        "example": null
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the object.",
+                        "enum": [
+                            "Skill"
+                        ]
+                    },
+                    "targetUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "An IRI pointing at the framework node of the skill or competency.",
+                        "format": "iri",
+                        "example": "http://data.europa.eu/esco/skill/8369c2d6-c100-4cf6-bd83-9668d8678433"
+                    }
+                },
+                "required": [
+                    "educationalFramework",
+                    "educationalFrameworkVersion",
+                    "name",
+                    "type"
+                ]
+            }
+        },
+        "keywords": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "Keywords describing the course.",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "example": "AI"
+            }
+        },
+        "educationalLevel": {
+            "type": "array",
+            "description": "An array of fragments describing the difficulty level of a course.",
+            "items": {
+                "type": "object",
+                "description": "A fragment describing the difficulty level of a course.",
+                "properties": {
+                    "educationalFramework": {
+                        "type": "string",
+                        "description": "The name of the framework used for describing the difficulty level of a course.",
+                        "enum": [
+                           "DigComp"
+                       ]
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "An IRI pointing at the framework document or homepage.",
+                        "format": "iri",
+                        "example": "https://publications.jrc.ec.europa.eu/repository/handle/JRC128415"
+
+                    },
+                    "educationalFrameworkVersion": {
+                        "type": "string",
+                        "description": "The version (year, version number) of the framework used for describing the difficulty level.",
+                        "example": "2.2"
+                    },
+                    "name": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "inLanguage": {
+                                    "type": "string",
+                                    "description": "The language the name is given in. Has to be a shortcode according to BCP 47.",
+                                    "example": "en"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "The actual name of the object in the defined language.",
+                                    "example": "Level 3 (Intermediate)"
+                                }
+                            },
+                            "required": [
+                                "inLanguage",
+                                "name"
+                            ]
+                        },
+                        "description": "List of names of the difficulty level. This array allows localized strings. A name and a language have to be given in the respective element."
+                    },
+                    "shortCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The short code for the difficulty level if it is provided by the framework.",
+                        "example": "3"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the object.",
+                        "enum": [
+                            "EducationalLevel"
+                        ]
+                    },
+                    "targetUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "An IRI pointing at the framework node of the difficulty level.",
+                        "format": "iri",
+                        "example": "http://data.europa.eu/esco/skill/8369c2d6-c100-4cf6-bd83-9668d8678433",
+                    }
+                },
+                "required": [
+                    "educationalFramework",
+                    "educationalFrameworkVersion",
+                    "name",
+                    "type"
+                ]
+            }
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "educationalAlignment",
+        "educationalLevel",
+        "keywords",
+        "teaches"
+    ]
+}
