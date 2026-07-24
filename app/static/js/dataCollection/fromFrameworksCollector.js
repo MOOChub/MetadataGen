@@ -22,14 +22,14 @@ export function collectFrameworkData(data, group) {
             }
 
             const framework = selected.split("@")[1];
-            let uri = input.getAttribute('conceptUrl');
+            let uri = input.getAttribute('targetUrl');
 
             dataFragment = {
                 "name": name,
                 "educationalFramework": framework
             }
             if(uri){
-                dataFragment["conceptUrl"] = uri;
+                dataFragment["targetUrl"] = uri;
             }
         }
         if(!isEmpty(dataFragment)){

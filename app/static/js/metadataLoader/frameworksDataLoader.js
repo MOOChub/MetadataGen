@@ -23,11 +23,11 @@ export function loadFrameworksData(group, inputData) {
         const framework = inputData[i]["educationalFramework"];
         const name = inputData[i]["name"][0]["name"];  // Always first item from Name object -> change to
         // look for "en", then "de", then first?
-        const uri = inputData[i]["conceptUrl"];
+        const uri = inputData[i]["targetUrl"];
 
         const selectionStorage = subContainer.getElementsByClassName(`selected-${group}`)[0];
 
         selectionStorage.textContent = `${name}@${framework}`;
-        selectionStorage.setAttribute('conceptUrl', uri);
+        selectionStorage.setAttribute('targetUrl', uri);
     }
 }

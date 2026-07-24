@@ -50,8 +50,7 @@ def build_framework_fragment(framework_data: dict, group: str):
     framework_data["url"] = conf["URL"]
 
     # Data from the framework CSV
-    additional_data = get_name_and_description(framework, group,
-                                               framework_data["conceptUrl"])
+    additional_data = get_name_and_description(framework, group, framework_data["targetUrl"])
 
     for k, v in generate_name_and_description_fragment(additional_data, conf).items():
         framework_data[k] = v
