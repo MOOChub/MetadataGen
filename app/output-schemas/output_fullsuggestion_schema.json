@@ -335,7 +335,7 @@
                         ],
                         "description": "An IRI pointing at the framework node of the difficulty level.",
                         "format": "iri",
-                        "example": "http://data.europa.eu/esco/skill/8369c2d6-c100-4cf6-bd83-9668d8678433"
+                        "example": "http://data.europa.eu/esco/skill/8369c2d6-c100-4cf6-bd83-9668d8678433",
                     }
                 },
                 "required": [
