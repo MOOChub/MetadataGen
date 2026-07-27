@@ -1,5 +1,4 @@
 import json
-
 import pandas as pd
 from pandas import DataFrame
 from app.helper.paths import FRAMEWORK_ROOT
@@ -56,6 +55,14 @@ def get_full_framework(group: str, framework: str) -> DataFrame:
     return pd.read_csv(path, dtype=str)
 
 
+def get_uri_by_name(name, group, framework):
+    data = get_full_framework(group, framework)
+    data = data[data["name"] == name]
+    max_level = data["level"].max()
+
+    return data[data["level"] == max_level]["uri"].item()
+
+
 def get_ed_level_uri_by_name(name, framework: str) -> str:
     data = get_full_framework("educationalLevel", framework)
     name = f"Level {name}"
@@ -70,6 +77,6 @@ def find_top_level_entries(group: str, framework: str):
 
 def find_sub_entries(group: str, framework: str, uri: str):
     data = get_full_framework(group, framework)
-    sub_entries = json.loads(data[data["uri"] == uri]["narrowerconcept"].item().replace("'", '"'))
+    sub_entries = json.loads(data[data["uri"] == uri]["narrowerconcept"].item().replace("'", '"'))  # TODO: eval instead?
 
     return data[data["uri"].isin(sub_entries)]

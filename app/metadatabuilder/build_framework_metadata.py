@@ -1,5 +1,5 @@
 from app.helper.load_config import load_framework_conf
-from app.framework_handler.framework_data_retriever import get_name_and_description
+from app.framework_handler.framework_data_retriever import get_name_and_description, get_uri_by_name
 from .helper import generate_name_and_description_fragment
 
 
@@ -35,7 +35,7 @@ def build_framework_fragment(framework_data: dict, group: str):
     :param group: The group the list of data belongs to (e.g. "educationalAlignment")
     :type group: str
     :return: A metadata fragment conforming to the MOOChub format.
-    :rtype: dict
+    :rtype: dict  # TODO: There is no return: pass by reference!
     """
     framework = framework_data["educationalFramework"]
 
@@ -49,8 +49,17 @@ def build_framework_fragment(framework_data: dict, group: str):
     framework_data["educationalFrameworkVersion"] = conf["VERSION"]
     framework_data["url"] = conf["URL"]
 
+    target_uri = framework_data.get("targetUrl")
+
+    # The targetUrl is an optional attribute, it does not have to be provided, this will look up the
+    # uri by name
+    if not target_uri:
+        name = framework_data["name"][0].get("name")  # TODO: what if there is no name? Find solution!
+        target_uri = get_uri_by_name(name, group, framework)
+        framework_data["targetUrl"] = target_uri
+
     # Data from the framework CSV
-    additional_data = get_name_and_description(framework, group, framework_data["targetUrl"])
+    additional_data = get_name_and_description(framework, group, target_uri)
 
     for k, v in generate_name_and_description_fragment(additional_data, conf).items():
         framework_data[k] = v
