@@ -13,8 +13,6 @@ def build_all_framework_metadata(all_raw_data: list, group: str) -> list:
     :type all_raw_data: list
     :param group: The group the list of data belongs to (e.g. "educationalAlignment")
     :type group: str
-    :return: A list of metadata fragments according to the MOOChub.
-    :rtype: list
     """
     framework_metadata = list()
 
@@ -25,17 +23,16 @@ def build_all_framework_metadata(all_raw_data: list, group: str) -> list:
     return framework_metadata
 
 
-def build_framework_fragment(framework_data: dict, group: str):
+def build_framework_fragment(framework_data: dict, group: str) -> None:
     """
     Takes a raw data fragment and enriches it with the mandatory data. It will take parts of the
-    data from the respective configuration file connected to the given framework and group.
+    data from the respective configuration file connected to the given framework and group. The data
+    is modified in the dictionaries via a pass by reference. No return value is needed.
 
     :param framework_data: A dictionary with the raw data fragment.
     :type framework_data: dict
     :param group: The group the list of data belongs to (e.g. "educationalAlignment")
     :type group: str
-    :return: A metadata fragment conforming to the MOOChub format.
-    :rtype: dict  # TODO: There is no return: pass by reference!
     """
     framework = framework_data["educationalFramework"]
 
