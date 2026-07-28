@@ -1,4 +1,3 @@
-import json
 import pandas as pd
 from pandas import DataFrame
 from app.helper.paths import FRAMEWORK_ROOT
@@ -126,6 +125,6 @@ def find_sub_entries(group: str, framework: str, uri: str) -> DataFrame:
     :rtype: DataFrame
     """
     data = get_full_framework(group, framework)
-    sub_entries = json.loads(data[data["uri"] == uri]["narrowerconcept"].item().replace("'", '"'))  # TODO: eval instead?
+    sub_entries = eval(data[data["uri"] == uri]["narrowerconcept"].item())
 
     return data[data["uri"].isin(sub_entries)]
