@@ -35,7 +35,7 @@ def get_full_framework(group: str, framework: str) -> DataFrame:
     :param framework: The framework to be returned.
     :type framework: str
     :return: The complete framework.
-    :rtype: pandas.DataFrame
+    :rtype: DataFrame
     """
 
     path = (
