@@ -38,7 +38,6 @@ def build_framework_fragment(framework_data: dict, group: str) -> None:
 
     conf = load_framework_conf(framework, group)
 
-    # Fixed data for EducationalAlignment objects
     framework_data["type"] = group[0].upper() + group[1:]  # capitalize() does not work, because it de-capitalizes
     # other words in camelcase.
 
