@@ -41,7 +41,7 @@ def generate_full_suggestion(raw_data: dict) -> dict:
             ed_align = parse_suggestion(ed_align)
             raw_data["educationalAlignment"] = ed_align
 
-    if "keywords" or "educationalLevel" in raw_data.keys():
+    if "keywords" in raw_data.keys() or "educationalLevel" in raw_data.keys():
         ed_level_framework = parse_educational_level_input(raw_data)
         llm_suggestion = execute_chain(ed_level_framework, query)
         if llm_suggestion:
