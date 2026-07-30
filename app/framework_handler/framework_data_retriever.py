@@ -4,7 +4,7 @@ from app.helper.paths import FRAMEWORK_ROOT
 import os
 
 
-def get_name_and_description(framework: str, group: str, uri: str) -> dict:
+def get_description(framework: str, group: str, uri: str) -> str | None:
     """
     Extracts and returns a name and a description of a given entry of a specified framework.
 
@@ -14,16 +14,16 @@ def get_name_and_description(framework: str, group: str, uri: str) -> dict:
     :type group: str
     :param uri: The URI of the entity as an unambiguous identifier.
     :type uri: str
-    :return: The name and the description of the entry.
-    :rtype: dict
+    :return: The description of the entry.
+    :rtype: str
     """
 
     data = get_full_framework(group, framework)
 
-    return {
-        "name": data[data["uri"] == uri]["name"].item(),
-        "description": data[data["uri"] == uri]["description"].item()
-    }
+    description = data[data["uri"] == uri]["description"].item()
+    if description and type(description) != float:
+        return description
+    return None
 
 
 def get_full_framework(group: str, framework: str) -> DataFrame:

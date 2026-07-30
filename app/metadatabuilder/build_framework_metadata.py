@@ -1,6 +1,5 @@
 from app.helper.load_config import load_framework_conf
-from app.framework_handler.framework_data_retriever import get_name_and_description, get_uri_by_name
-from .helper import generate_name_and_description_fragment
+from app.framework_handler.framework_data_retriever import get_description, get_uri_by_name
 
 
 def build_all_framework_metadata(all_raw_data: list, group: str) -> list:
@@ -45,17 +44,22 @@ def build_framework_fragment(framework_data: dict, group: str) -> None:
     framework_data["educationalFrameworkVersion"] = conf["VERSION"]
     framework_data["url"] = conf["URL"]
 
-    target_uri = framework_data.get("targetUrl")
+    name = framework_data["name"]
 
+    target_uri = framework_data.get("targetUrl")
     # The targetUrl is an optional attribute, it does not have to be provided, this will look up the
     # uri by name
     if not target_uri:
-        name = framework_data["name"][0].get("name")  # TODO: what if there is no name? Find solution!
         target_uri = get_uri_by_name(name, group, framework)
-        framework_data["targetUrl"] = target_uri
+        framework_data["targetUrl"] = target_uri  # TODO: what if there is no uri? Find solution!
+
+    # create name fragment add inLanguage to it
+    framework_data["name"] = [{
+        "name": name,
+        "inLanguage": conf["LANGUAGE"]
+    }]
 
     # Data from the framework CSV
-    additional_data = get_name_and_description(framework, group, target_uri)
-
-    for k, v in generate_name_and_description_fragment(additional_data, conf).items():
-        framework_data[k] = v
+    description = get_description(framework, group, target_uri)
+    if description:
+        framework_data["description"] = description

@@ -14,6 +14,7 @@ def parse_suggestion(raw_suggestion: tuple[list, str]) -> list:
 
     for suggestion in raw_suggestion:
         temp = dict()
+        temp["name"] = suggestion["name"]
         temp["targetUrl"] = suggestion["uri"]
         temp["educationalFramework"] = framework
 
