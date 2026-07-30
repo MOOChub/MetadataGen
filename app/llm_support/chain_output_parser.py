@@ -1,4 +1,4 @@
-from app.framework_handler.framework_data_retriever import get_ed_level_uri_by_name
+from app.framework_handler.framework_data_retriever import get_uri_by_name
 
 
 def parse_chain_output(chain_output: str, framework: str) -> dict:
@@ -29,12 +29,13 @@ def parse_chain_output(chain_output: str, framework: str) -> dict:
 
     ed_level = chain_output.get("educationalLevel")
     if ed_level:
-        uri = get_ed_level_uri_by_name(ed_level, framework)
+        uri = get_uri_by_name(ed_level, "educationalLevel", framework)
 
-        ed_level = dict()
-        ed_level["targetUrl"] = uri
-        ed_level["educationalFramework"] = framework
+        ed_level_fragment = dict()
+        ed_level_fragment["name"] = ed_level
+        ed_level_fragment["targetUrl"] = uri
+        ed_level_fragment["educationalFramework"] = framework
 
-        parsed_output["educationalLevel"] = [ed_level]
+        parsed_output["educationalLevel"] = [ed_level_fragment]
 
     return parsed_output
