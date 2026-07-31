@@ -17,12 +17,12 @@ def get_description(framework: str, group: str, uri: str) -> str | None:
     :return: The description of the entry.
     :rtype: str
     """
+    if uri:
+        data = get_full_framework(group, framework)
 
-    data = get_full_framework(group, framework)
-
-    description = data[data["uri"] == uri]["description"].item()
-    if description and type(description) != float:
-        return description
+        description = data[data["uri"] == uri]["description"].item()
+        if description and type(description) != float:
+            return description
     return None
 
 
@@ -54,11 +54,12 @@ def get_full_framework(group: str, framework: str) -> DataFrame:
     return pd.read_csv(path, dtype=str)
 
 
-def get_uri_by_name(name: str, group: str, framework: str) -> str:
+def get_uri_by_name(name: str, group: str, framework: str) -> str | None:
     """
     Return the URI of a framework entry identified by its name. The framework
     is searched by the name and only the entry with the highest level is returned
-    in case that thee are several entries with the same name.
+    in case that thee are several entries with the same name. If there is no URI
+    available None is returned.
 
     :param name: The name of the entry.
     :type name: str
@@ -66,14 +67,17 @@ def get_uri_by_name(name: str, group: str, framework: str) -> str:
     :type group: str
     :param framework: The framework the entry belongs to.
     :type framework: str
-    :return: The URI of the entry.
-    :rtype: str
+    :return: The URI of the entry or None if no URI is available.
+    :rtype: str | None
     """
     data = get_full_framework(group, framework)
     data = data[data["name"] == name]
     max_level = data["level"].max()
 
-    return data[data["level"] == max_level]["uri"].item()
+    uri = data[data["level"] == max_level]["uri"].item()
+    if type(uri) != float:
+        return uri
+    return None
 
 
 def find_top_level_entries(group: str, framework: str) -> DataFrame:

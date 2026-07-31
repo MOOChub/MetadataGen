@@ -51,7 +51,8 @@ def build_framework_fragment(framework_data: dict, group: str) -> None:
     # uri by name
     if not target_uri:
         target_uri = get_uri_by_name(name, group, framework)
-        framework_data["targetUrl"] = target_uri  # TODO: what if there is no uri? Find solution!
+        if target_uri:
+            framework_data["targetUrl"] = target_uri
 
     # create name fragment add inLanguage to it
     framework_data["name"] = [{
@@ -59,7 +60,8 @@ def build_framework_fragment(framework_data: dict, group: str) -> None:
         "inLanguage": conf["LANGUAGE"]
     }]
 
-    # Data from the framework CSV
-    description = get_description(framework, group, target_uri)
-    if description:
-        framework_data["description"] = description
+    # Data from the framework CSV if possible
+    if target_uri:
+        description = get_description(framework, group, target_uri)
+        if description:
+            framework_data["description"] = description
