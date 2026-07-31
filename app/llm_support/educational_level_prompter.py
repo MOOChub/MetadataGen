@@ -3,10 +3,10 @@ from app.framework_handler.framework_data_retriever import get_full_framework
 
 PROMPT = 'Please give a rating for the difficulty of a learning resource based on the title and the ' \
             'description. Please use the given framework under level_framework and assign ' \
-            'the appropriate level. The level is found in the "level" column. ' \
-            'Please select the appropriate level according to the "explanation"' \
+            'the appropriate name. The name is found in the "name" column. ' \
+            'Please select the appropriate name according to the "explanation"' \
             'column. Return the results in this form:' \
-            '"educationalLevel = <the level you picked according to the framework>".\n'
+            '"educationalLevel = <the name you picked according to the framework>".\n'
 
 
 def get_prompt(framework: str) -> str:
@@ -20,5 +20,6 @@ def get_prompt(framework: str) -> str:
     :rtype: str
     """
     full_framework = get_full_framework("educationalLevel", framework)
+    framework = full_framework[["name", "uri", "description"]]
     return f"{PROMPT}\n" \
-           f"level_framework: {full_framework}\n\n"
+           f"level_framework: {framework}\n\n"

@@ -118,7 +118,7 @@ function buildSelectButton(framework, name, uri, selectionStorage) {
     selectBtn.setAttribute('style', "float:right;");
     selectBtn.onclick = function () {
         selectionStorage.textContent = `${name}@${framework}`;
-        selectionStorage.setAttribute('conceptUrl', uri);
+        selectionStorage.setAttribute('targetUrl', uri);
     }
     return selectBtn
 }

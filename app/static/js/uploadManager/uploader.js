@@ -9,7 +9,4 @@ export async function uploadFile() {
     file = file["attributes"];
 
     await loadData(file);
-
-    //console.log(file);
-
 }

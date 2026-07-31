@@ -29,7 +29,7 @@
     ],
     "educationalAlignment": [
         {
-            "conceptUrl": "http://data.europa.eu/esco/isced-f/0520",
+            "targetUrl": "http://data.europa.eu/esco/isced-f/0520",
             "educationalFramework": "ISCED-F",
             "alignmentType": "educationalSubject",
             "type": "EducationalAlignment",
@@ -43,7 +43,7 @@
             ]
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/isced-f/0529",
+            "targetUrl": "http://data.europa.eu/esco/isced-f/0529",
             "educationalFramework": "ISCED-F",
             "alignmentType": "educationalSubject",
             "type": "EducationalAlignment",
@@ -57,7 +57,7 @@
             ]
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/isced-f/052",
+            "targetUrl": "http://data.europa.eu/esco/isced-f/052",
             "educationalFramework": "ISCED-F",
             "alignmentType": "educationalSubject",
             "type": "EducationalAlignment",
@@ -71,7 +71,7 @@
             ]
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/isced-f/0521",
+            "targetUrl": "http://data.europa.eu/esco/isced-f/0521",
             "educationalFramework": "ISCED-F",
             "alignmentType": "educationalSubject",
             "type": "EducationalAlignment",
@@ -86,7 +86,7 @@
             "description": "Environmental sciences are the study of organisms in relation to one another and to the environment.\r\nProgrammes and qualifications with the following main content are classified here:\r\nEcology\r\nEnvironmental science\r\n\r\n=== Exclusions\r\nThe study of biology and toxicology are excluded from this detailed field and included under narrow field 051 'Biological and related sciences'."
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/isced-f/0613",
+            "targetUrl": "http://data.europa.eu/esco/isced-f/0613",
             "educationalFramework": "ISCED-F",
             "alignmentType": "educationalSubject",
             "type": "EducationalAlignment",
@@ -103,7 +103,7 @@
     ],
     "teaches": [
         {
-            "conceptUrl": "http://data.europa.eu/esco/skill/8369c2d6-c100-4cf6-bd83-9668d8678433",
+            "targetUrl": "http://data.europa.eu/esco/skill/8369c2d6-c100-4cf6-bd83-9668d8678433",
             "educationalFramework": "ESCO",
             "educationalFrameworkVersion": 2.2,
             "url": "https://esco.ec.europa.eu/en/classification/skill_main#overlayspin",
@@ -116,7 +116,7 @@
             "description": "Use techniques and algorithms that are able to extract mastery out of data, learn from it and make predictions, to be used for program optimisation, application adaptation, pattern recognition, filtering, search engines and computer vision."
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/skill/3e2ab38a-4519-4bef-b762-a8bf4836a775",
+            "targetUrl": "http://data.europa.eu/esco/skill/3e2ab38a-4519-4bef-b762-a8bf4836a775",
             "educationalFramework": "ESCO",
             "educationalFrameworkVersion": 2.2,
             "url": "https://esco.ec.europa.eu/en/classification/skill_main#overlayspin",
@@ -129,7 +129,7 @@
             "description": "Reduce the number of variables or features for a dataset in machine learning algorithms through methods such as principal component analysis, matrix factorization, autoencoder methods, and others."
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/skill/a4d336a6-9ffd-402a-91cc-f359716ba4e0",
+            "targetUrl": "http://data.europa.eu/esco/skill/a4d336a6-9ffd-402a-91cc-f359716ba4e0",
             "educationalFramework": "ESCO",
             "educationalFrameworkVersion": 2.2,
             "url": "https://esco.ec.europa.eu/en/classification/skill_main#overlayspin",
@@ -142,7 +142,7 @@
             "description": "The techniques and principles of software development, such as analysis, algorithms, coding, testing and compiling of programming paradigms in ML."
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/skill/c4ba12d1-4698-42fa-8abb-789462ea2586",
+            "targetUrl": "http://data.europa.eu/esco/skill/c4ba12d1-4698-42fa-8abb-789462ea2586",
             "educationalFramework": "ESCO",
             "educationalFrameworkVersion": 2.2,
             "url": "https://esco.ec.europa.eu/en/classification/skill_main#overlayspin",
@@ -155,7 +155,7 @@
             "description": "Be aware of the environmental impact of digital technologies and their use."
         },
         {
-            "conceptUrl": "http://data.europa.eu/esco/skill/469e19ed-a0bd-445a-ae2d-4ba9430e296b",
+            "targetUrl": "http://data.europa.eu/esco/skill/469e19ed-a0bd-445a-ae2d-4ba9430e296b",
             "educationalFramework": "ESCO",
             "educationalFrameworkVersion": 2.2,
             "url": "https://esco.ec.europa.eu/en/classification/skill_main#overlayspin",
@@ -182,7 +182,7 @@
     ],
     "educationalLevel": [
         {
-            "conceptUrl": "https://metadata-generator.xikolo.de/framework/digcomp/3",
+            "targetUrl": "https://metadata-generator.xikolo.de/framework/digcomp/3",
             "educationalFramework": "DigComp",
             "type": "EducationalLevel",
             "educationalFrameworkVersion": "2.2",

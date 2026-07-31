@@ -1,7 +1,7 @@
 from app.suggestion_engine.similarity_search import search_frameworks
 from app.suggestion_engine.suggestion_output_parser import parse_suggestion
 from app.llm_support.chain_educational_level_parser import parse_educational_level_input
-from app.llm_support.chain_manager import get_chain_by_config
+from app.llm_support.chain_manager import execute_chain
 from app.llm_support.chain_output_parser import parse_chain_output
 from app.metadatabuilder.build_full_metadata import build_metadata
 from app.metadatabuilder.build_optional_metadata import build_optional_metadata
@@ -25,8 +25,6 @@ def generate_full_suggestion(raw_data: dict) -> dict:
     query = f"{raw_data['name']}. {raw_data['description']}"
     query = translate(query)
 
-    execute_chain = get_chain_by_config().execute_chain
-
     if "teaches" in raw_data.keys():
         teaches_framework = raw_data["teaches"]
         teaches = search_frameworks(teaches_framework, query)
@@ -43,9 +41,9 @@ def generate_full_suggestion(raw_data: dict) -> dict:
             ed_align = parse_suggestion(ed_align)
             raw_data["educationalAlignment"] = ed_align
 
-    if "keywords" or "educationalLevel" in raw_data.keys():
+    if "keywords" in raw_data.keys() or "educationalLevel" in raw_data.keys():
         ed_level_framework = parse_educational_level_input(raw_data)
-        llm_suggestion = execute_chain(query, ed_level_framework)
+        llm_suggestion = execute_chain(ed_level_framework, query)
         if llm_suggestion:
             llm_suggestion = parse_chain_output(llm_suggestion, ed_level_framework)
 
@@ -74,15 +72,13 @@ def generate_optional_suggestions(raw_data):
     query = f"{raw_data['name']}. {raw_data['description']}"
     query = translate(query)
 
-    execute_chain = get_chain_by_config().execute_chain
-
     teaches = search_frameworks([{"educationalFramework": "ESCO"}], query)
     teaches = parse_suggestion(teaches)
 
     ed_align = search_frameworks([{"educationalFramework": "ISCED-F"}], query)
     ed_align = parse_suggestion(ed_align)
 
-    llm_suggestion = execute_chain(query, "DigComp")
+    llm_suggestion = execute_chain("DigComp", query)
     llm_suggestion = parse_chain_output(llm_suggestion, "DigComp")
 
     output_data["teaches"] = teaches

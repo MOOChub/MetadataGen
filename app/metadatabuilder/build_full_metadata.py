@@ -32,6 +32,12 @@ def build_metadata(data: dict) -> dict:
     optional_attributes = build_optional_metadata(data)
     metadata.update(optional_attributes)
 
-    write_log(metadata)
+    try:
+        write_log(metadata)
+    except Exception as e:
+        print(e)
+        print("Problem with connecting to the suggestion log database...")
+        print("Skipping logging the suggestions...")
+        print("This has no effect on the metadata generation.")
 
     return metadata

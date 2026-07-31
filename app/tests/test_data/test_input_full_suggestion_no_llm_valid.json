@@ -1,0 +1,32 @@
+{
+    "name": "Sustainability in the Digital Age: Efficient AI Techniques in the LLM Era",
+    "description": "\n    <h2>Welcome to the \"Sustainability in the Digital Age\" series</h2>\\n\\n<p>In an era where \"\n    digital technologies are reshaping industries and daily life, the environmental impact of AI systems has \n    become a growing concern. This course explores efficient AI methodologies to address these challenges. From \n    deep learning model compression to low-bit quantization and collaborative inference, we delve into techniques \n    that enhance computational efficiency and reduce energy consumption. In Week 2, we focus on low-bit \n    quantization specifically for large language models (LLMs), showcasing cutting-edge open-source tools and \n    models. Join us to learn how to build sustainable AI systems while pushing the boundaries of innovation. \n    </p>\\n\\n<hr>\\n\\n<p>This course is part of the <strong>Sustainability in the Digital Age</strong> series, \n    a collaborative project between colleagues from Stanford University, SAP and the Hasso Plattner Institute. </p>\\n\n    ",
+    "url": "https://open.hpi.de/courses/aimethods2025",
+    "license": [
+        {
+            "identifier": "CC-BY-NC-SA-4.0",
+            "url": "https://spdx.org/licenses/CC-BY-NC-SA-4.0.html"
+        }
+    ],
+    "publisher": {
+        "name": "openHPI",
+        "url": "https://open.hpi.de",
+        "description": "openHPI is the digital education platform of the Hasso Plattner Institute, Potsdam, Germany. On openHPI you take part in a worldwide social learning network based on interactive online courses covering different subjects in Information and Communication Technology (ICT)."
+    },
+    "creator": [
+        {
+            "name": "Haojin Yang",
+            "description": "PD Dr. Haojin Yang is a senior researcher and multimedia and machine learning (MML) research group leader at Hasso-Plattner-Institute (HPI). Since 2019, he has been habilitated for a professorship. His research focuses on efficient deep learning, model acceleration and compression, and AI agentic systems."
+        }
+    ],
+    "educationalAlignment": [
+        {
+            "educationalFramework": "ISCED-F"
+        }
+    ],
+    "teaches": [
+        {
+            "educationalFramework": "ESCO"
+        }
+    ]
+}
